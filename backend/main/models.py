@@ -64,3 +64,29 @@ class UserProfile(models.Model):
     first_name = models.TextField(blank=True)
     last_name = models.TextField(blank=True)
     phone = models.CharField(max_length=11)
+
+
+class Ingredient(models.Model):
+    name = models.CharField(max_length=100)
+    unit = models.CharField(max_length=10)  # г, мл, шт и т.п.
+    quantity = models.FloatField(default=0)  # текущий остаток
+
+    def __str__(self):
+        return self.name
+
+class StockIn(models.Model):
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    quantity = models.FloatField()
+    price_per_unit = models.FloatField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+class StockOut(models.Model):
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    quantity = models.FloatField()
+    reason = models.CharField(max_length=255)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+class RecipeIngredient(models.Model):
+    recipe = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='ingredients')
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
+    quantity = models.FloatField()  # на 1 единицу блюда
