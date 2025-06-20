@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
       >
         <header className= {`flex items-center p-3 w-[98%] border-b-[1px] border-[#8A8784] ${procces ? `justify-between` : `justify-center`}`}>
           <div className={procces ? "flex items-center gap-[50px] w-[50%]" : ""}>
-            <Link href="/" className="font-bold text-[35px]">Шаур 構 мяу</Link>
+            <Link href="/about" className="font-bold text-[35px]">Шаур 構 мяу</Link>
             {procces && <div className="relative w-[40%]">
               <input type="text" className="w-[100%] border-[2px] border-[#C4C2BE] rounded-[15px] pl-[40px] py-3 outline-none " placeholder="Найти в ресторане"/>
               <button className="absolute left-[10px] top-[25%]">
@@ -49,8 +49,12 @@ export default function RootLayout({ children }) {
               </button>
             </div>
             }
+              <Link href="/" className="font-medium text-neutral-800">Каталог</Link>
+              <Link href="/contacts" className="font-medium text-neutral-800 text-[15px]">Контакты</Link>
           </div>
-          {procces && <HeaderAuth/>}
+          <div className="flex items-center">
+            {procces && <HeaderAuth/>}
+          </div>
         </header>
         {children}
       </body>

@@ -35,6 +35,8 @@ export default function ProfileLayout ({children}){
                         <path d="M3.5 10L4.91 18.64C5.23 20.58 6 22 8.86 22H14.89C18 22 18.46 20.64 18.82 18.76L20.5 10" stroke="#292D32" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
                 </button>
+                <button>
+                </button>
             </div>
             <div className="bg-white p-6 rounded-2xl w-[95%]">
                 {children}
