@@ -19,6 +19,9 @@ export default function Home() {
   const { isAuthenticated } = useAuth(); 
   const router = useRouter()
 
+  const isBasketNotEmpty = basket && basket.length > 0;
+  const isButtonDisabled = !isAuthenticated || !isBasketNotEmpty;
+
   const fetchProductsAndBasket = async () => {
     try {
       const productsResponse = await axios.get("http://localhost:8000/api/products");
@@ -273,7 +276,12 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <button className="px-3 py-2 bg-[#ffe100] rounded-[10px] w-[100%]" onClick={() => {router.push("/checkout")}}>
+          <button className={`px-3 py-2 rounded-[10px] w-[100%] ${isButtonDisabled ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#ffe100]'}`}
+            onClick={() => {
+              if (!isButtonDisabled) router.push("/checkout");
+            }}
+            disabled={isButtonDisabled}
+          >
             <div className="flex items-center justify-between ">
               <h1 className="text-[18px] font-medium">Далее</h1>
               <h1 className="text-[17px] font-mono">{finishPrice}₽</h1>
