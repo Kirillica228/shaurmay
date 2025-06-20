@@ -50,6 +50,12 @@ export default function RootLayout({ children }) {
             </div>
             }
           </div>
+          <div className="flex items-center w-[280px] justify-between">
+            <Link href="/about" className="font-medium text-neutral-800">О нас</Link>
+            <Link href="/" className="font-medium text-neutral-800">Каталог</Link>
+            <Link href="/contacts" className="font-medium text-neutral-800 text-[15px]">Контакты</Link>
+            {procces && <HeaderAuth/>}
+          </div>
           {procces && <HeaderAuth/>}
         </header>
         {children}
