@@ -37,8 +37,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${notoSansJP.variable} antialiased bg-[#F8F7F5]`}
       >
-        <header className= {`flex items-center p-3 w-[98%] border-b-[1px] border-[#8A8784] ${procces ? `justify-between` : `justify-center`}`}>
-          <div className={procces ? "flex items-center gap-[50px] w-[50%]" : ""}>
+       <header className={`flex items-center p-3 w-[98%] border-b-[1px] border-[#8A8784] ${procces ? `justify-between` : `justify-center`}`}>
+          <div className={procces ? "flex items-center gap-[50px] w-[50%]" : "flex justify-center w-full"}>
             <Link href="/" className="font-bold text-[35px]">Шаур 構 мяу</Link>
             {procces && <div className="relative w-[40%]">
               <input type="text" className="w-[100%] border-[2px] border-[#C4C2BE] rounded-[15px] pl-[40px] py-3 outline-none " placeholder="Найти в ресторане"/>
@@ -50,13 +50,16 @@ export default function RootLayout({ children }) {
             </div>
             }
           </div>
-          <div className="flex items-center w-[280px] justify-between">
-            <Link href="/about" className="font-medium text-neutral-800">О нас</Link>
-            <Link href="/" className="font-medium text-neutral-800">Каталог</Link>
-            <Link href="/contacts" className="font-medium text-neutral-800 text-[15px]">Контакты</Link>
-            {procces && <HeaderAuth/>}
+          <div className="flex items-center w-[360px] justify-between">
+          {procces && (
+            <div className="flex items-center w-[360px] justify-between">
+              <Link href="/about" className="font-medium text-neutral-800">О нас</Link>
+              <Link href="/" className="font-medium text-neutral-800">Каталог</Link>
+              <Link href="/contacts" className="font-medium text-neutral-800 text-[15px]">Контакты</Link>
+              <HeaderAuth />
+            </div>
+          )}
           </div>
-          {procces && <HeaderAuth/>}
         </header>
         {children}
       </body>
